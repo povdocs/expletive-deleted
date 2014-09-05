@@ -32,8 +32,7 @@
 		words = {},
 		coverEnabled = true,
 		form = document.getElementById('form'),
-		iframe = document.getElementById('iframe'),
-		symbols = '#$@&%*!';
+		iframe = document.getElementById('iframe');
 
 		function grawlix(word) {
 			var i, n,
@@ -46,7 +45,7 @@
 			}
 
 			for (i = 1; i < n; i++) {
-				newWord += symbols[i % symbols.length];
+				newWord += '-';
 			}
 			if (n < word.length) {
 				newWord += word[n];
@@ -56,7 +55,7 @@
 		}
 
 		function updateLabel(ref) {
-			var labelText = ref.censored ? ref.grawlix : ref.word;
+			var labelText = ref.grawlix;
 			if (ref.qual) {
 				labelText += ' (' + ref.qual + ')';
 			}
