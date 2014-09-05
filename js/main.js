@@ -16,8 +16,21 @@
 		AudioContext = window.AudioContext || window.webkitAudioContext,
 
 		words = {},
+		hashes = {},
 		coverEnabled = true,
 		wordsLoaded = false;
+
+	//djb2
+	function hash(str) {
+		var out = 5381,
+			char;
+
+		for (i = 0; i < str.length; i++) {
+			char = str.charCodeAt(i);
+			out = ((out << 5) + out) + char; /* out * 33 + c */
+		}
+		return out;
+	}
 
 	function initMedia() {
 		var tempCtx,
@@ -182,6 +195,9 @@
 			enabled: true,
 			occurrences: []
 		};
+
+		hashes[hash(word)] = word;
+
 		return ref;
 	}
 
@@ -242,6 +258,29 @@
 			});
 
 			wordsLoaded = true;
+
+			// get words configuration from URL query
+			query = window.location.search.replace(/^\?/,'').split('&');
+			query.forEach(function (term) {
+				var param = term.split('=').map(function (s) {
+						return s.trim();
+					}),
+					word;
+
+				if (!param[0]) {
+					return;
+				}
+
+				if (param[0] === '$cover') {
+					coverEnabled = !(param[1] === '0' || param[1] && param[1].toLowerCase() === 'false');
+					return;
+				}
+
+				word = hashes[parseInt(param[0], 10)];
+				if (param.length === 1 || param[1] === '0' || param[1] && param[1].toLowerCase() === 'false') {
+					disableWords(word);
+				}
+			});
 		};
 		xhr.open('GET', 'data/words.json');
 		xhr.send();
@@ -252,22 +291,6 @@
 
 		initMedia();
 		loadEvents();
-
-		// get words configuration from URL query
-		query = window.location.search.replace(/^\?/,'').split('&');
-		query.forEach(function (term) {
-			var param = term.split('=').map(function (s) {
-				return s.trim();
-			});
-			if (param[0] === '$cover') {
-				coverEnabled = !(param[1] === '0' || param[1] && param[1].toLowerCase() === 'false');
-				return;
-			}
-
-			if (param[1] === '0' || param[1] && param[1].toLowerCase() === 'false') {
-				disableWords(param[0]);
-			}
-		});
 
 		window.addEventListener('keydown', function(evt) {
 			if (popcorn.paused()) {

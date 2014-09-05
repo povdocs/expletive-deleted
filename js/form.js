@@ -32,9 +32,22 @@
 		words = {},
 		coverEnabled = true,
 		form = document.getElementById('form'),
-		iframe = document.getElementById('iframe');
+		iframe = document.getElementById('iframe'),
+		embed = document.getElementById('embed');
 
-		function grawlix(word) {
+		//djb2
+		function hash(str) {
+			var out = 5381,
+				char;
+
+			for (i = 0; i < str.length; i++) {
+				char = str.charCodeAt(i);
+				out = ((out << 5) + out) + char; /* out * 33 + c */
+			}
+			return out;
+		}
+
+		function clean(word) {
 			var i, n,
 				newWord;
 
@@ -55,11 +68,30 @@
 		}
 
 		function updateLabel(ref) {
-			var labelText = ref.grawlix;
+			var labelText = ref.clean;
 			if (ref.qual) {
 				labelText += ' (' + ref.qual + ')';
 			}
 			ref.label.childNodes[1].nodeValue = labelText;
+		}
+
+		function setEmbedCode() {
+			var word,
+				ref,
+				params = [],
+				url = window.location.origin + window.location.pathname.replace(/[^\/]+$/, '') + 'player.html?';
+
+			for (word in words) {
+				if (words.hasOwnProperty(word)) {
+					ref = words[word];
+					if (!ref.censored) {
+						params.push(ref.hash + '=0');
+					}
+				}
+			}
+
+			url += params.join('&amp;');
+			embed.value = '<iframe width="960" height="540" src="' + url + '"></iframe>';
 		}
 
 		function updateWord(input, word) {
@@ -71,7 +103,8 @@
 				word: word,
 				censored: ref.censored
 			}, '*');
-			console.log('toggle', word, ref.censored);
+
+			setEmbedCode();
 		}
 
 		function loadWords() {
@@ -103,7 +136,8 @@
 					ref = {
 						word: split[0],
 						qual: split[1],
-						grawlix: split[0].split(' ').map(grawlix).join(' '), //grawlix(split[0]),
+						hash: hash(word),
+						clean: split[0].split(' ').map(clean).join(' '), //clean(split[0]),
 						censored: true,
 						label: label
 					};
@@ -121,10 +155,19 @@
 
 					form.appendChild(label);
 				});
+
+				setEmbedCode();
 			};
 			xhr.open('GET', 'data/words.json');
 			xhr.send();
 		}
 
 		loadWords();
+
+		embed.addEventListener('focus', function () {
+			this.setSelectionRange(0, this.value.length);
+		});
+		embed.addEventListener('click', function () {
+			this.setSelectionRange(0, this.value.length);
+		});
 }(this));
