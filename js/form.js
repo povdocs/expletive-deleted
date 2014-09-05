@@ -30,9 +30,9 @@
 			'tits'
 		],
 		words = {},
-		coverEnabled = true,
 		form = document.getElementById('form'),
 		iframe = document.getElementById('iframe'),
+		cover = document.getElementById('cover'),
 		embed = document.getElementById('embed');
 
 		//djb2
@@ -81,6 +81,10 @@
 				params = [],
 				url = window.location.origin + window.location.pathname.replace(/[^\/]+$/, '') + 'player.html?';
 
+			if (!cover.checked) {
+				params.push('cover=0');
+			}
+
 			for (word in words) {
 				if (words.hasOwnProperty(word)) {
 					ref = words[word];
@@ -92,6 +96,15 @@
 
 			url += params.join('&amp;');
 			embed.value = '<iframe width="960" height="540" src="' + url + '"></iframe>';
+		}
+
+		function updateCover() {
+			iframe.contentWindow.postMessage({
+				action: 'setCover',
+				cover: cover.checked
+			}, '*');
+
+			setEmbedCode();
 		}
 
 		function updateWord(input, word) {
@@ -163,6 +176,7 @@
 		}
 
 		loadWords();
+		updateCover();
 
 		embed.addEventListener('focus', function () {
 			this.setSelectionRange(0, this.value.length);
@@ -170,4 +184,5 @@
 		embed.addEventListener('click', function () {
 			this.setSelectionRange(0, this.value.length);
 		});
+		cover.addEventListener('change', updateCover);
 }(this));

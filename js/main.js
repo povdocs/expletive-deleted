@@ -17,6 +17,7 @@
 
 		words = {},
 		hashes = {},
+		allOccurrences = [],
 		coverEnabled = true,
 		wordsLoaded = false;
 
@@ -159,27 +160,25 @@
 			bleep: occurrence.bleep
 		};
 
-		if (coverEnabled) {
-			options.cover = !!occurrence.cover;
-			['x', 'y', 'width', 'height'].forEach(function (field) {
-				var val = occurrence[field],
-					keyframes;
+		options.cover = coverEnabled && !!occurrence.cover;
+		['x', 'y', 'width', 'height'].forEach(function (field) {
+			var val = occurrence[field],
+				keyframes;
 
-				if (typeof val === 'object') {
-					keyframes = {};
-					Popcorn.forEach(val, function (val, time) {
-						if (/[;:]/.test(time)) {
-							time = Popcorn.util.toSeconds(time, FRAME_RATE);
-							time = (time - options.start) / (options.end - options.start);
-						}
-						keyframes[time] = val;
-					});
-					options[field] = keyframes;
-				} else if (val !== undefined) {
-					options[field] = val;
-				}
-			});
-		}
+			if (typeof val === 'object') {
+				keyframes = {};
+				Popcorn.forEach(val, function (val, time) {
+					if (/[;:]/.test(time)) {
+						time = Popcorn.util.toSeconds(time, FRAME_RATE);
+						time = (time - options.start) / (options.end - options.start);
+					}
+					keyframes[time] = val;
+				});
+				options[field] = keyframes;
+			} else if (val !== undefined) {
+				options[field] = val;
+			}
+		});
 
 		popcorn.nsfw(options);
 		occurrence.popcornId = popcorn.getLastTrackEventId();
@@ -252,6 +251,7 @@
 
 				wordRef = initializeWord(occurrence.word);
 				wordRef.occurrences.push(occurrence);
+				allOccurrences.push(occurrence);
 				if (wordRef.enabled) {
 					enableOccurrence(wordRef, occurrence);
 				}
@@ -271,7 +271,7 @@
 					return;
 				}
 
-				if (param[0] === '$cover') {
+				if (param[0] === 'cover') {
 					coverEnabled = !(param[1] === '0' || param[1] && param[1].toLowerCase() === 'false');
 					return;
 				}
@@ -314,6 +314,15 @@
 				} else {
 					disableWords(evt.data.word);
 				}
+			} else if (evt.data.action === 'setCover') {
+				coverEnabled = !!evt.data.cover;
+				allOccurrences.forEach(function (occurrence) {
+					if (occurrence.popcornId) {
+						popcorn.nsfw(occurrence.popcornId, {
+							cover: occurrence.cover && coverEnabled
+						});
+					}
+				});
 			}
 			//todo: toggle blur
 		});
