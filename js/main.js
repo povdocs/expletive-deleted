@@ -317,7 +317,7 @@
 			} else if (evt.data.action === 'setCover') {
 				coverEnabled = !!evt.data.cover;
 				allOccurrences.forEach(function (occurrence) {
-					if (occurrence.popcornId) {
+					if (occurrence.popcornId && occurrence.bleep !== false && occurrence.cover) {
 						popcorn.nsfw(occurrence.popcornId, {
 							cover: occurrence.cover && coverEnabled
 						});
