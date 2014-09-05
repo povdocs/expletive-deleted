@@ -51,7 +51,7 @@
 			var i, n,
 				newWord;
 
-			newWord = word[0];
+			newWord = word[0].toUpperCase();
 			n = word.length;
 			if (n >= 4) {
 				n--;
