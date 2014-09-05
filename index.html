@@ -41,15 +41,22 @@
 				padding: 4px 10px;
 			}
 
+			#embed {
+				width: 500px;
+			}
+
 		</style>
 	</head>
 	<body>
 		<div id="container">
-			<div id="form"></div>
+			<div id="form">
+				<label><input type="checkbox" id="cover" checked/>Prevent lip reading</label>
+			</div>
 			<div id="video">
 				<iframe src="player.html" width="960" height="540" id="iframe"></iframe>
 			</div>
 		</div>
+		<input type="text" id="embed" readonly/>
 		<script type="text/javascript" src="js/form.js"></script>
 	</body>
 </html>
