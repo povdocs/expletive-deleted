@@ -5,7 +5,7 @@
 	b) Web Audio API gain node doesn't work in any Safari when the source is a media element
 	So there's no way to silence the audio track.
 	*/
-	var VIDEO_PATH = 'video/', // http://pov-tc.pbs.org/pov/flv/2014/
+	var VIDEO_PATH = 'http://video.chirls.com/', // http://pov-tc.pbs.org/pov/flv/2014/
 		FRAME_RATE = 23.98, // specific to video file, needs to be hard-coded
 		popcorn,
 		video,
