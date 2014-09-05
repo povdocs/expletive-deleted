@@ -1,0 +1,183 @@
+[
+    {
+        "word": "fuck",
+        "start": 10.8,
+        "end": 11.118,
+        "note": "like 20 fuckin pounds",
+
+        "cover": true,
+        "x": 380,
+        "y": 214,
+        "width": 110,
+        "height": 52
+    },
+    {
+        "word": "fuck",
+        "start": 13.336,
+        "end": 13.630,
+        "note": "fuckin sick boys over here"
+    },
+
+    {
+    	"bleep": false,
+        "word": "fuck",
+        "start": 14.953628,
+        "end": 18.507511,
+        "note": "subtitles - fuckin nyquil",
+
+        "cover": true,
+        "x": 556,
+        "y": 456,
+        "width": 94,
+        "height": 33
+    },
+
+
+    {
+        "word": "fuck",
+        "start": 16.202,
+        "end": 16.693,
+        "note": "fuckin nyquil"
+    },
+    {
+        "word": "shit",
+        "start": 18.046,
+        "end": 18.146,
+        "note": "I don't drink that shit like he does",
+
+        "cover": true,
+        "x": 326,
+        "y": 295,
+        "width": 37,
+        "height": 21
+    },
+    {
+        "word": "fuck",
+        "start": 41.698,
+        "end": 42.014,
+        "note": "what did I fuckin tell ya"
+    },
+    {
+        "word": "fuck",
+        "start": 46.228,
+        "end": 46.528,
+        "note": "I fuckin' can't see..."
+    },
+    {
+        "word": "shit",
+        "start": 47.064,
+        "end": 47.549,
+        "note": "...can't see through shit"
+    },
+    {
+        "word": "shit",
+        "start": 48.664,
+        "end": 48.955,
+        "note": "shit's like gold"
+    },
+    {
+        "word": "fuck",
+        "start": 51.160,
+        "end": 51.450,
+        "note": "knocks you the fuck out"
+    },
+    {
+        "word": "fuck",
+        "start": 52.07,
+        "end": 52.477000000000004,
+        "note": "so you ain't gonna fuckin' have that problem"
+    },
+    {
+        "word": "shit",
+        "start": "1:18.88",
+        "end": "1:19.162",
+        "note": "scare the shit out of ya"
+    },
+    {
+        "word": "shit",
+        "start": "1:27.369",
+        "end": "1:28.334",
+        "note": "oh shit"
+    },
+    {
+        "word": "bitch",
+        "start": "1:38.171",
+        "end": "1:38.485",
+        "note": "big son of a bitch"
+    },
+    {
+        "word": "hell",
+        "start": "1:47.496",
+        "end": "1:47.774",
+        "note": "how the hell"
+    },
+    {
+        "word": "shit",
+        "start": "1:50.822",
+        "end": "1:51.136",
+        "note": "go out there and bury shit"
+    },
+    {
+        "word": "hell",
+        "start": "1:53.538",
+        "end": "1:53.721",
+        "note": "how the hell"
+    },
+    {
+        "word": "hell",
+        "start": "2:30.701",
+        "end": "2:30.953",
+        "note": "how the hell"
+    },
+    {
+    	"bleep": false,
+        "word": "hell",
+        "start": 150.635989,
+        "end": 152.35037,
+        "note": "subtitle - how the hell",
+
+        "cover": true,
+        "x": 398,
+        "y": 455,
+        "width": 48,
+        "height": 31
+    },
+    {
+        "word": "shit",
+        "start": "2:40.263",
+        "end": "2:40.545",
+        "note": "see some shit happen"
+    },
+    {
+    	"bleep": false,
+        "word": "shit",
+        "start": 159.878062,
+        "end": 161.870733,
+        "note": "subtitle - see some shit happen",
+
+        "cover": true,
+        "x": 486,
+        "y": 457,
+        "width": 52,
+        "height": 30
+    },
+    {
+        "word": "fuck",
+        "start": "2:53.262",
+        "end": "2:53.700",
+        "note": "that fuckin means something right there"
+    },
+    {
+    	"bleep": false,
+        "word": "fuck",
+        "start": 173.291787,
+        "end": 175.523035,
+        "note": "subtitle - that fuckin means something right there",
+
+        "cover": true,
+        "x": 355,
+        "y": 427,
+        "width": 93,
+        "height": 30
+    }
+]

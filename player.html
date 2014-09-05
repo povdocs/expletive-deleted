@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NSFW</title>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, width=device-width"/>
+		<link href="//vjs.zencdn.net/4.7/video-js.css" rel="stylesheet">
+		<style>
+			body {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				color: #eee;
+				overflow: hidden;
+				background: rgb(40, 40, 40);
+
+				height: 100%;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			#container {
+				position: relative;
+			}
+
+			#container > canvas {
+				position: absolute;
+			}
+			.vjs-default-skin .vjs-big-play-button {
+				left: 50%;
+				margin-left: -2em;
+				top: 50%;
+				margin-top: -1.3em;
+			}
+
+			.nsfw-cover {
+				position: absolute;
+				background-color: black;
+				display: none;
+			}
+
+			.nsfw-cover.active {
+				display: inline-block;
+			}
+
+			#video > canvas {
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="container">-->
+			<video id="video" controls width="960" height="540" class="video-js vjs-default-skin">
+				<!--
+				<source src="../responsive-video/video/boxer.webm" type="video/webm"/>
+				<source src="../responsive-video/video/boxer.mp4" type="video/mp4"/>
+				<source src="http://pov-tc.pbs.org/pov/flv/2014/olympia-hd.webm" type="video/webm"/>
+				<source src="http://pov-tc.pbs.org/pov/flv/2014/olympia-hd.mp4" type="video/mp4"/>
+				<script type="text/javascript">
+				if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+					document.write('<source src="video/koch-mid.mp4" type="video/mp4"/>');
+				}
+				</script>
+				-->
+			</video>
+		<!--</div>-->
+		<script type="text/javascript" src="js/lib/seriously/seriously.js"></script>
+		<script type="text/javascript" src="js/lib/seriously/seriously.blend.js"></script>
+		<script type="text/javascript" src="js/lib/seriously/seriously.pixelate.js"></script>
+		<script type="text/javascript" src="js/lib/seriously/seriously.crop.js"></script>
+
+		<script type="text/javascript" src="js/lib/popcorn.js"></script>
+		<script type="text/javascript" src="js/lib/popcorn-base.js"></script>
+		<script type="text/javascript" src="js/popcorn.nsfw.js"></script>
+
+		<script src="//vjs.zencdn.net/4.7/video.js"></script>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

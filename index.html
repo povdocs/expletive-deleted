@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NSFW</title>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, width=device-width"/>
+		<style>
+			body {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				color: #eee;
+				overflow: hidden;
+				background: rgb(40, 40, 40);
+
+				height: 100%;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			#iframe {
+				border: none;
+				display: block;
+			}
+
+			#video {
+				display: inline-block;
+			}
+
+			#form {
+				display: inline-block;
+				/*
+				-webkit-columns: 2;
+				-moz-columns: 2;
+				columns: 2;
+				*/
+			}
+
+			label {
+				display: block;
+				padding: 4px 10px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="form"></div>
+			<div id="video">
+				<iframe src="player.html" width="960" height="540" id="iframe"></iframe>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/form.js"></script>
+	</body>
+</html>
