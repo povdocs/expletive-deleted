@@ -1,10 +1,9 @@
 [
     {
         "word": "fuck",
-        "start": 10.8,
-        "end": 11.118,
+        "start": 8.469754000000002,
+        "end": 8.787754,
         "note": "like 20 fuckin pounds",
-
         "cover": true,
         "x": 380,
         "y": 214,
@@ -13,38 +12,33 @@
     },
     {
         "word": "fuck",
-        "start": 13.336,
-        "end": 13.630,
+        "start": 11.005754,
+        "end": 11.299754,
         "note": "fuckin sick boys over here"
     },
-
     {
-    	"bleep": false,
+        "bleep": false,
         "word": "fuck",
-        "start": 14.953628,
-        "end": 18.507511,
+        "start": 12.623382,
+        "end": 16.177265000000002,
         "note": "subtitles - fuckin nyquil",
-
         "cover": true,
         "x": 556,
         "y": 456,
         "width": 94,
         "height": 33
     },
-
-
     {
         "word": "fuck",
-        "start": 16.202,
-        "end": 16.693,
+        "start": 13.871754000000003,
+        "end": 14.362754000000002,
         "note": "fuckin nyquil"
     },
     {
         "word": "shit",
-        "start": 18.046,
-        "end": 18.146,
+        "start": 15.715754,
+        "end": 15.815754000000002,
         "note": "I don't drink that shit like he does",
-
         "cover": true,
         "x": 326,
         "y": 295,
@@ -53,89 +47,88 @@
     },
     {
         "word": "fuck",
-        "start": 41.698,
-        "end": 42.014,
+        "start": 39.367754,
+        "end": 39.683754,
         "note": "what did I fuckin tell ya"
     },
     {
         "word": "fuck",
-        "start": 46.228,
-        "end": 46.528,
+        "start": 43.897754,
+        "end": 44.197753999999996,
         "note": "I fuckin' can't see..."
     },
     {
         "word": "shit",
-        "start": 47.064,
-        "end": 47.549,
+        "start": 44.733754,
+        "end": 45.218754,
         "note": "...can't see through shit"
     },
     {
         "word": "shit",
-        "start": 48.664,
-        "end": 48.955,
+        "start": 46.333754,
+        "end": 46.624753999999996,
         "note": "shit's like gold"
     },
     {
         "word": "fuck",
-        "start": 51.160,
-        "end": 51.450,
+        "start": 48.829753999999994,
+        "end": 49.119754,
         "note": "knocks you the fuck out"
     },
     {
         "word": "fuck",
-        "start": 52.07,
-        "end": 52.477000000000004,
+        "start": 49.739754,
+        "end": 50.146754,
         "note": "so you ain't gonna fuckin' have that problem"
     },
     {
         "word": "shit",
-        "start": "1:18.88",
-        "end": "1:19.162",
+        "start": "1:16.549753999999993",
+        "end": "1:16.831754000000004",
         "note": "scare the shit out of ya"
     },
     {
         "word": "shit",
-        "start": "1:27.369",
-        "end": "1:28.334",
+        "start": "1:25.038753999999997",
+        "end": "1:26.003754",
         "note": "oh shit"
     },
     {
         "word": "bitch",
-        "start": "1:38.171",
-        "end": "1:38.485",
+        "start": "1:35.84075399999999",
+        "end": "1:36.154754",
         "note": "big son of a bitch"
     },
     {
         "word": "hell",
-        "start": "1:47.496",
-        "end": "1:47.774",
+        "start": "1:45.16575400000001",
+        "end": "1:45.443754",
         "note": "how the hell"
     },
     {
         "word": "shit",
-        "start": "1:50.822",
-        "end": "1:51.136",
+        "start": "1:48.491754",
+        "end": "1:48.80575399999999",
         "note": "go out there and bury shit"
     },
     {
         "word": "hell",
-        "start": "1:53.538",
-        "end": "1:53.721",
+        "start": "1:51.207753999999994",
+        "end": "1:51.390754",
         "note": "how the hell"
     },
     {
         "word": "hell",
-        "start": "2:30.701",
-        "end": "2:30.953",
+        "start": "2:28.370754000000005",
+        "end": "2:28.622754000000015",
         "note": "how the hell"
     },
     {
-    	"bleep": false,
+        "bleep": false,
         "word": "hell",
-        "start": 150.635989,
-        "end": 152.35037,
+        "start": "2:28.305743000000007",
+        "end": "2:30.02012400000001",
         "note": "subtitle - how the hell",
-
         "cover": true,
         "x": 398,
         "y": 455,
@@ -144,17 +137,16 @@
     },
     {
         "word": "shit",
-        "start": "2:40.263",
-        "end": "2:40.545",
+        "start": "2:37.93275400000002",
+        "end": "2:38.21475400000003",
         "note": "see some shit happen"
     },
     {
-    	"bleep": false,
+        "bleep": false,
         "word": "shit",
-        "start": 159.878062,
-        "end": 161.870733,
+        "start": "2:37.54781600000001",
+        "end": "2:39.54048700000001",
         "note": "subtitle - see some shit happen",
-
         "cover": true,
         "x": 486,
         "y": 457,
@@ -163,17 +155,16 @@
     },
     {
         "word": "fuck",
-        "start": "2:53.262",
-        "end": "2:53.700",
+        "start": "2:50.93175400000001",
+        "end": "2:51.369754",
         "note": "that fuckin means something right there"
     },
     {
-    	"bleep": false,
+        "bleep": false,
         "word": "fuck",
-        "start": 173.291787,
-        "end": 175.523035,
+        "start": "2:50.96154100000001",
+        "end": "2:53.192789000000005",
         "note": "subtitle - that fuckin means something right there",
-
         "cover": true,
         "x": 355,
         "y": 427,
