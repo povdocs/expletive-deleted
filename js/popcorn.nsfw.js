@@ -23,7 +23,6 @@
 		resizeTimeout,
 		lastResize = 0,
 
-		RESIZE_THROTTLE = 30,
 		BLEEP_GAIN = 0.05,
 		FREQUENCY = 493.883; //"B4" note
 
@@ -177,9 +176,11 @@
 
 		function resize() {
 			if (cover && cover.crop) {
-				cover.crop.right = popcorn.media.videoWidth - options.width - options.x;
-				cover.crop.bottom = popcorn.media.videoHeight - options.height - options.y;
-				cover.pixelate.pixelSize = popcorn.media.videoWidth / 50;
+				cover.crop.left = base.options.x;
+				cover.crop.top = base.options.y;
+				cover.crop.right = popcorn.media.videoWidth - base.options.width - base.options.x;
+				cover.crop.bottom = popcorn.media.videoHeight - base.options.height - base.options.y;
+				cover.pixelate.pixelSize = popcorn.media.videoWidth / 60;
 
 				// crop node is centered in canvas by default
 				cover.position.translateX = (cover.crop.left - cover.crop.right) / 2;
@@ -230,8 +231,6 @@
 							pixelate: seriously.effect('pixelate'),
 							position: seriously.transform('2d'),
 						};
-						cover.crop.left = options.x;
-						cover.crop.top = options.y;
 
 						resize();
 
@@ -248,10 +247,10 @@
 					} else {
 						cover = document.createElement('div');
 						cover.className = 'nsfw-cover';
-						cover.style.left = options.x + 'px';
-						cover.style.top = options.y + 'px';
-						cover.style.width = options.width + 'px';
-						cover.style.height = options.height + 'px';
+						cover.style.left = base.options.x + 'px';
+						cover.style.top = base.options.y + 'px';
+						cover.style.width = base.options.width + 'px';
+						cover.style.height = base.options.height + 'px';
 						if (popcorn.media.parentNode) {
 							popcorn.media.parentNode.appendChild(cover);
 						}
@@ -333,29 +332,55 @@
 			seriously = null;
 			target = null;
 		}
+
+		//bug fix/workaround
+		['x', 'y', 'width', 'height'].forEach(function (field) {
+			var val = base.options[field];
+			if (typeof val === 'object') {
+				base.options[field] = val.from;
+			}
+		});
+
 		setUpCover();
 
 		/*
-		todo: make animation happen, at least with x and y
+		make animation happen, at least with x and y
 		*/
+
 		base.animate('x', function (val) {
-			if (cover && cover.style) {
-				cover.style.left = val + 'px';
+			if (cover) {
+				if (cover.crop) {
+					//resize();
+				} else if (cover.style) {
+					cover.style.left = val + 'px';
+				}
 			}
 		});
 		base.animate('y', function (val) {
-			if (cover && cover.style) {
-				cover.style.top = val + 'px';
+			if (cover) {
+				if (cover.crop) {
+					//resize();
+				} else if (cover.style) {
+					cover.style.top = val + 'px';
+				}
 			}
 		});
 		base.animate('width', function (val) {
-			if (cover && cover.style) {
-				cover.style.width = val + 'px';
+			if (cover) {
+				if (cover.crop) {
+					//resize();
+				} else if (cover.style) {
+					cover.style.width = val + 'px';
+				}
 			}
 		});
 		base.animate('height', function (val) {
-			if (cover && cover.style) {
-				cover.style.height = val + 'px';
+			if (cover) {
+				if (cover.crop) {
+					//resize();
+				} else if (cover.style) {
+					cover.style.height = val + 'px';
+				}
 			}
 		});
 
@@ -383,6 +408,7 @@
 					endCover();
 				}
 			},
+			frame: resize,
 			_update: function (trackEvent, changes) {
 				if ('cover' in changes && changes.cover !== trackEvent.cover) {
 					options.cover = changes.cover;
