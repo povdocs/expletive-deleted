@@ -6,7 +6,7 @@
 	So there's no way to silence the audio track.
 	*/
 	var VIDEO_PATH = 'video/', // http://pov-tc.pbs.org/pov/flv/2014/
-		FRAME_RATE = 23.98, // specific to video file, needs to be hard-coded
+		FRAME_RATE = 30, // specific to video file, needs to be hard-coded
 		popcorn,
 		video,
 		vjs,
@@ -39,7 +39,6 @@
 			seriously;
 
 		function resize() {
-			console.log('resize');
 			var windowAspect,
 				videoAspect,
 				canvas,
