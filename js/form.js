@@ -53,9 +53,6 @@
 
 			newWord = word[0].toUpperCase();
 			n = word.length;
-			if (n >= 4) {
-				n--;
-			}
 
 			for (i = 1; i < n; i++) {
 				newWord += '-';
