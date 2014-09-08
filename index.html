@@ -8,14 +8,22 @@
 		<style>
 			body {
 				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-				color: #eee;
-				overflow: hidden;
+				color: #ddd;
 				background: rgb(40, 40, 40);
 
 				height: 100%;
 				width: 100%;
 				margin: 0px;
 				padding: 0px;
+			}
+
+			h1 {
+				font-size: 16px;
+				margin: 0 0 4px;
+			}
+
+			a, a:visited {
+				color: #eee;
 			}
 
 			#iframe {
@@ -27,36 +35,52 @@
 				display: inline-block;
 			}
 
-			#form {
-				display: inline-block;
-				/*
-				-webkit-columns: 2;
-				-moz-columns: 2;
-				columns: 2;
-				*/
-			}
-
-			label {
+			#form label {
 				display: block;
 				padding: 4px 10px;
 			}
 
 			#embed {
-				width: 500px;
+				width: 100%;
+			}
+
+			#container {
+				margin: 0 auto;
+				width: 960px;
+			}
+
+			fieldset {
+				display: block;
+				border-width: 0 0 1px 0;
 			}
 
 		</style>
 	</head>
 	<body>
 		<div id="container">
-			<div id="form">
-				<label><input type="checkbox" id="cover" checked/>Prevent lip reading</label>
-			</div>
+			<header>
+				<h1>Dynamic Censorship Experiment</h1>
+				<p>Real-time  visual and audio censorship based on dynamic configuration. Select options below, and the sample video will be censored accordingly. HTML embed code is available to embed player with your configuration.</p>
+				<p>This should work in Firefox and Chrome. Code by Brian Chirls is available on <a href="https://github.com/povdocs/expletive-deleted">GitHub</a>. Videos provided by <a href="http://pbs.org/pov/">POV</a>.</p>
+			</header>
 			<div id="video">
 				<iframe src="player.html" width="960" height="540" id="iframe"></iframe>
 			</div>
+			<div>
+				<fieldset id="form">
+					Select which words to censor:
+				</fieldset>
+				<fieldset>
+					<label><input type="checkbox" id="cover" checked/>Prevent lip reading</label>
+				</fieldset>
+				<fieldset>
+					<label for="embed">Embed code:</label>
+					<p>
+						<input type="text" id="embed" readonly/>
+					</p>
+				</fieldset>
+			</div>
 		</div>
-		<input type="text" id="embed" readonly/>
 		<script type="text/javascript" src="js/form.js"></script>
 		<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
