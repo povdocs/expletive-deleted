@@ -163,6 +163,7 @@
 	Popcorn.basePlugin('nsfw', function (options, base) {
 		var popcorn = base.popcorn,
 			active = false,
+			bleeping = false,
 
 			seriously,
 			target,
@@ -188,15 +189,17 @@
 			}
 		}
 
-		function pause() {
-			if (active && options.bleep !== false) {
+		function pause(evt) {
+			if (active && options.bleep !== false && bleeping) {
 				endBleep(popcorn.id);
+				bleeping = false;
 			}
 		}
 
-		function play() {
-			if (active && options.bleep !== false) {
+		function play(evt) {
+			if (active && options.bleep !== false && !bleeping) {
 				startBleep(popcorn.id);
+				bleeping = true;
 			}
 		}
 
@@ -315,7 +318,6 @@
 		*/
 		if (iOS) {
 			document.body.addEventListener('touchstart', function () {
-				console.log('touchstart!');
 				initializeAudio();
 			}, true);
 		} else {
@@ -394,15 +396,17 @@
 					startCover();
 				}
 				active = true;
-				if (!popcorn.media.paused && options.bleep !== false) {
+				if (!popcorn.media.paused && options.bleep !== false && !bleeping) {
 					startBleep(popcorn.id);
+					bleeping = true;
 				}
 			},
 			end: function() {
 				//removeEvent(popcorn, base.options);
 				active = false;
-				if (!popcorn.media.paused && options.bleep !== false) {
+				if (!popcorn.media.paused && options.bleep !== false && bleeping) {
 					endBleep(popcorn.id);
+					bleeping = false;
 				}
 				if (cover) {
 					endCover();
@@ -415,16 +419,18 @@
 					setUpCover();
 				}
 
-				if ('bleep' in changes && changes.bleep !== trackEvent.bleep) {
+				if ('bleep' in changes && Boolean(changes.bleep) !== Boolean(trackEvent.bleep)) {
 					options.bleep = changes.bleep;
 					if (options.bleep) {
 						addBleep(popcorn.id);
-						if (active && !popcorn.media.paused) {
+						if (active && !popcorn.media.paused && !bleeping) {
 							startBleep(popcorn.id);
+							bleeping = true;
 						}
 					} else {
-						if (active && !popcorn.media.paused) {
+						if (active && !popcorn.media.paused && bleeping) {
 							endBleep(popcorn.id);
+							bleeping = false;
 						}
 						removeBleep(popcorn.id);
 					}
