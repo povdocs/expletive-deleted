@@ -52,7 +52,8 @@ The `note` field is ignored, but it is useful as an annotation to make reading t
 ## Technology
 
 This experiment makes use of the following tools and technology:
-- HTML video - playing video and manipulating it with CSS as part of the DOM
+- HTML video - playing and manipulating video
+- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) - muting audio and generating "bleep" tone
 - [Popcorn.js](https://github.com/mozilla/popcorn-js) - manage timing of the filter data
 - [Popcorn Base Plugin](https://github.com/brianchirls/popcorn-base) - keyframe animation of shot parameters
 - [Seriously.js](http://github.com/brianchirls/Seriously.js/) - run the pixelate effect
