@@ -17,6 +17,7 @@
 
 		words = {},
 		hashes = {},
+		unprocessedHashes = {},
 		allOccurrences = [],
 		coverEnabled = true,
 		wordsLoaded = false;
@@ -236,19 +237,48 @@
 
 	// Load censorship occurrences from JSON file on the server
 	function loadEvents() {
+		// get words configuration from URL query
+		var query = window.location.search.replace(/^\?/,'').split('&');
+		query.forEach(function (term) {
+			var param = term.split('=').map(function (s) {
+					return s.trim();
+				}),
+				wordHash;
+
+			if (!param[0]) {
+				return;
+			}
+
+			if (param[0] === 'cover') {
+				coverEnabled = !(param[1] === '0' || param[1] && param[1].toLowerCase() === 'false');
+				return;
+			}
+
+			if (param.length === 1 || param[1] === '0' || param[1] && param[1].toLowerCase() === 'false') {
+				wordHash = parseInt(param[0], 10);
+				unprocessedHashes[wordHash] = true;
+			}
+		});
+
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function () {
 			var response;
 
 			response = JSON.parse(xhr.responseText);
 			response.forEach(function (occurrence) {
-				var wordRef;
+				var wordRef,
+					wordHash;
 
 				if (!occurrence.word) {
 					occurrence.word = ''; // could be used for just pixelating
 				}
 
 				wordRef = initializeWord(occurrence.word);
+				wordHash = hash(occurrence.word);
+				if (unprocessedHashes[wordHash]) {
+					unprocessedHashes[wordHash] = false;
+					disableWords(occurrence.word);
+				}
 				wordRef.occurrences.push(occurrence);
 				allOccurrences.push(occurrence);
 				if (wordRef.enabled) {
@@ -257,37 +287,12 @@
 			});
 
 			wordsLoaded = true;
-
-			// get words configuration from URL query
-			query = window.location.search.replace(/^\?/,'').split('&');
-			query.forEach(function (term) {
-				var param = term.split('=').map(function (s) {
-						return s.trim();
-					}),
-					word;
-
-				if (!param[0]) {
-					return;
-				}
-
-				if (param[0] === 'cover') {
-					coverEnabled = !(param[1] === '0' || param[1] && param[1].toLowerCase() === 'false');
-					return;
-				}
-
-				word = hashes[parseInt(param[0], 10)];
-				if (param.length === 1 || param[1] === '0' || param[1] && param[1].toLowerCase() === 'false') {
-					disableWords(word);
-				}
-			});
 		};
 		xhr.open('GET', 'data/words.json');
 		xhr.send();
 	}
 
 	function initialize() {
-		var query;
-
 		initMedia();
 		loadEvents();
 
