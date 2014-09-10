@@ -63,7 +63,7 @@ This is an experimental prototype designed to test a concept, so it's not a full
 
 - The video player is very basic. A fully functional embedded player would have a more complete API.
 - Tested successfully in Chrome (mobile and desktop). Other browsers have bugs in Web Audio API that prevent it from working. With a little more work, it is possible to set the video volume directly without the Web Audio API, except on Mobile Safari, where that feature is disabled.
-- The demo is broken in Firefox due to a bug where Web Audio API does not work with cross-origin content.
+- The demo is broken in Firefox due to a [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=937718) where Web Audio API does not work with cross-origin content.
 
 ## License
 - Original code is made avalable under [MIT License](http://www.opensource.org/licenses/mit-license.php), Copyright (c) 2014 American Documentary Inc.
